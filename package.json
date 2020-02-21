@@ -1,7 +1,7 @@
 {
-  "name": "conduit-node",
+  "name": "node-express-starter",
   "version": "1.0.0",
-  "description": "conduit on node",
+  "description": "starter node api with jwt auth",
   "main": "app.js",
   "scripts": {
     "mongo:start": "docker run --name realworld-mongo -p 27017:27017 mongo & sleep 5",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gothinkster/productionready-node-api.git"
+    "url": "git+https://github.com/jsrhodes15/node-express-starter.git"
   },
   "license": "ISC",
   "dependencies": {
@@ -37,7 +37,21 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.5",
     "newman": "^3.8.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.{js,ts,json,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   }
 }
